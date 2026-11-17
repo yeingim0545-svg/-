@@ -39,7 +39,7 @@ export const LockScreen: React.FC<LockScreenProps> = ({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
 
       {/* 날짜 + 리퀴드 글래스 시계 */}
-      <div className="relative z-10 w-full flex flex-col items-center pt-[calc(env(safe-area-inset-top)+74px)]">
+      <div className="relative z-10 w-full flex flex-col items-center pt-[max(74px,calc(env(safe-area-inset-top)+30px))]">
         <p className="text-[17px] font-semibold tracking-tight text-white/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)]">
           11월 18일 (수)
         </p>
