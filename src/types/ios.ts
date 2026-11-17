@@ -75,6 +75,16 @@ export interface StoryChapter {
   video?: string;
   /** 장면(슬라이드) 인덱스별로 사진을 교체한다. 지정하지 않은 장면은 기본 사진을 쓴다. */
   slideImages?: Record<number, string>;
+  /**
+   * 장면(슬라이드) 인덱스별로 동영상을 지정한다.
+   * 이 값이 있으면 챕터 영상(video)은 쓰지 않고, 지정된 장면에서만 영상이 재생된다.
+   */
+  slideVideos?: Record<number, string>;
+  /**
+   * 선택지 인덱스별로 '선택 결과' 화면에 띄울 사진을 지정한다.
+   * 선택 전(선택지 화면)에는 쓰이지 않는다.
+   */
+  choiceImages?: Record<number, string>;
   slides: StorySlide[];
   story: string;
   choices: StoryChoice[];

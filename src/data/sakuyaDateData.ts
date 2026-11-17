@@ -41,6 +41,13 @@ export const SAKUYA_PHOTOS = {
   handwrittenLetter: './assets/aistudio/sakuya_handwritten_letter.jpg', // 손편지 "사랑이 이렇게 행복한 것이란 걸 알려 줘서 고마워"
   taxiNight: './assets/aistudio/sakuya_taxi_night.jpg', // 밤 택시 안에서 본 앞좌석
   phoneCase: './assets/aistudio/sakuya_phone_case.jpg', // 즉석사진을 핸드폰 케이스에 넣은 손
+  cafeSunlight: './assets/aistudio/sakuya_cafe_sunlight.jpg', // 햇살 들어오는 브런치 카페 실내
+  konbiniSnack: './assets/aistudio/sakuya_konbini_snack.jpg', // 편의점 냉장고에서 간식 고르는 순간
+  aquariumWatch: './assets/aistudio/sakuya_aquarium_watch.jpg', // 수조를 들여다보는 사쿠야
+  cafePhonePhotos: './assets/aistudio/sakuya_cafe_phone_photos.jpg', // 카페에서 휴대전화 사진을 넘겨보는 사쿠야
+  parkEnvelopeNight: './assets/aistudio/sakuya_park_envelope_night.jpg', // 밤 공원, 교복 자켓 옆모습
+  parkLetterNight: './assets/aistudio/sakuya_park_letter_night.jpg', // 밤 산책로 가죽재킷
+  secondLetterNote: './assets/aistudio/sakuya_second_letter_note.jpg', // 두 번째 손편지 (하루하루는 더 따뜻해 되자)
   birthdayCake: './src/assets/images/sakuya_birthday_cake_1794916860554.jpg',
 };
 
@@ -345,6 +352,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '브런치 — 나란히 앉은 두 사람',
     place: '도쿄의 작은 브런치 카페',
     coverImage: SAKUYA_PHOTOS.brunchPastry,
+    // 첫 장면(카페에 들어서는 대목)은 햇살 들어오는 카페 실내, 초코빵 장면은 그대로 둔다
+    slideImages: { 0: SAKUYA_PHOTOS.cafeSunlight },
     story: `카페는 큰길에서 조금 벗어난 곳에 있었다. 유리창 너머로 들어오는 햇빛이 테이블 위에 길게 놓여 있었다.
 
 사쿠야는 미리 예약해 둔 창가 자리로 안내했다. 메뉴를 고르는 동안 그는 취향을 먼저 물었다. "누나, 먹고 싶은 거 있어?"
@@ -383,8 +392,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '사진관 — 오늘을 기록하기',
     place: '도쿄의 즉석사진관',
     coverImage: SAKUYA_PHOTOS.photobooth,
-    // 마지막 장면(사진을 건네받는 순간)에서 핸드폰 케이스에 넣은 사진을 보여준다
-    slideImages: { 2: SAKUYA_PHOTOS.phoneCase },
+    // 폰케이스 사진은 '사진을 휴대전화 케이스에 넣는다'를 골랐을 때의 결과 화면에만 나온다
+    choiceImages: { 0: SAKUYA_PHOTOS.phoneCase },
     story: `카페를 나와 걷던 중 사쿠야가 사진관을 발견했다. "누나, 우리 이거 찍을까?"
 
 기계 안으로 들어가자 사쿠야는 화면에 표시된 포즈를 하나씩 살펴봤다. 첫 번째 사진은 무난했다.
@@ -421,6 +430,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '거리 산책 — 목적지 없는 데이트',
     place: '도쿄 오모테산도 거리',
     coverImage: SAKUYA_PHOTOS.snowHoodie,
+    // 편의점에서 간식을 고르는 장면
+    slideImages: { 1: SAKUYA_PHOTOS.konbiniSnack },
     story: `사진관을 나와서는 특별한 목적지 없이 거리를 걸었다.
 
 사람들이 오가는 거리에는 겨울을 준비하는 상점들이 하나둘 모습을 드러내고 있었다.
@@ -528,7 +539,12 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     tag: 'DATE',
     title: '아쿠아리움 — 푸른빛 아래에서',
     place: '도쿄 아쿠아리움',
-    coverImage: SAKUYA_PHOTOS.phoneCamera,
+    coverImage: SAKUYA_PHOTOS.aquariumWatch,
+    // 사진을 찍어 주는 장면에서만 폰 카메라 사진을 쓴다
+    slideImages: {
+      1: SAKUYA_PHOTOS.phoneCamera,
+      2: SAKUYA_PHOTOS.phoneCamera,
+    },
     story: `아쿠아리움 안은 바깥과 전혀 다른 분위기였다. 천장과 벽을 가득 채운 푸른빛 사이로 물고기들이 천천히 움직이고 있었다.
 
 사쿠야는 수조 앞에서 걸음을 멈췄다. "누나, 이거 봐." 유리 너머로 커다란 물고기 한 마리가 지나갔다.
@@ -567,7 +583,15 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '카페 — 잠깐의 휴식',
     place: '아쿠아리움 근처 디저트 카페',
     coverImage: SAKUYA_VIDEOS.icecreamPoster,
-    video: SAKUYA_VIDEOS.icecream,
+    // 아이스크림을 먹는 장면에서만 영상, 사진을 넘겨보는 장면에서는 사진
+    slideVideos: {
+      0: SAKUYA_VIDEOS.icecream,
+      1: SAKUYA_VIDEOS.icecream,
+    },
+    slideImages: {
+      2: SAKUYA_PHOTOS.cafePhonePhotos,
+      3: SAKUYA_PHOTOS.cafePhonePhotos,
+    },
     story: `아쿠아리움을 나와 도착한 카페에는 달콤한 디저트 향이 가득했다. 둘은 창가에 앉아 아이스크림과 음료를 주문했다.
 
 아이스크림이 나오자 사쿠야는 자기 컵에서 한 숟갈을 떠서 지유 쪽으로 내밀었다. "누나, 이거 진짜 맛있어. 한 입만."
@@ -608,8 +632,12 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '공원 — 사쿠야가 준비한 편지',
     place: '도쿄의 한적한 공원',
     coverImage: SAKUYA_PHOTOS.heartGummy,
-    // "봉투 안에는 손으로 쓴 편지가 들어 있었다" 장면에 실제 손편지 사진
-    slideImages: { 1: SAKUYA_PHOTOS.handwrittenLetter },
+    // 봉투를 꺼내는 장면 · 편지 마지막 문장 장면(손편지 사진은 그 사이 장면에 유지)
+    slideImages: {
+      0: SAKUYA_PHOTOS.parkEnvelopeNight,
+      1: SAKUYA_PHOTOS.handwrittenLetter,
+      2: SAKUYA_PHOTOS.parkLetterNight,
+    },
     story: `카페를 나왔을 때 햇빛은 조금씩 기울고 있었다. 사쿠야는 근처의 한적한 공원으로 데려갔다.
 
 잠시 앉아 있던 사쿠야가 가방을 열었다. "누나, 이거." 작은 봉투 하나를 꺼냈다. 평소와 달리 조심스러운 표정이었다. "읽어 봐."
@@ -651,7 +679,7 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
 
 두 사람은 나란히 걸었다. 사쿠야는 아까보다 말수가 조금 줄어 있었다. 그렇다고 어색한 침묵은 아니었다.
 
-그는 손을 잡은 채 가끔씩 걸음을 늦췄다. "누나, 우리 처음 만났을 때 기억나?"
+그는 손을 잡은 채 가끔씩 걸음을 늦췄다. "누나, 우리 처음 만났을 때 기억나?" 그리고 혼잣말처럼 덧붙였다. "빼빼로데이에 내가 고백하길 잘했어. 그때 용기 안 냈으면 지금 이렇게 걷지도 못했을 텐데."
 
 사쿠야는 그날의 사소한 일들을 이야기했다. 처음 나눴던 대화, 서로 어색하게 웃었던 순간, 오래 이어졌던 연락.
 
@@ -792,6 +820,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '선물 — 네가 좋아할 것 같아서',
     place: '프라이빗 룸',
     coverImage: SAKUYA_PHOTOS.bouquet,
+    // 두 번째 손편지가 나오는 장면에 마지막 사진
+    slideImages: { 1: SAKUYA_PHOTOS.secondLetterNote },
     story: `케이크를 나눠 먹고 난 뒤 사쿠야는 리본이 단정하게 묶인 작은 상자를 꺼냈다. "누나, 이것도 있어."
 
 상자 안에는 평소에 관심을 보였던 물건이 들어 있었다. "전에 누나가 예쁘다고 했잖아." 그는 그런 말을 기억하고 있었다.

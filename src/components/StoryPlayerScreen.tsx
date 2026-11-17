@@ -169,9 +169,19 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
   };
 
   const visibleText = targetText.slice(0, displayedChars);
-  const activeImage = currentSlide.image || chapter.coverImage;
-  // 동영상 장면: 슬라이드에 지정된 영상이 우선, 없으면 챕터 영상
-  const activeVideo = currentSlide.video || chapter.video;
+  // 선택 결과 화면에서는 고른 선택지에 지정된 사진이 우선한다
+  const reactionImage =
+    phase === 'reaction' && chosenIndex !== undefined
+      ? chapter.choiceImages?.[chosenIndex]
+      : undefined;
+  const activeImage =
+    reactionImage || currentSlide.image || chapter.coverImage;
+  // 영상 장면: slideVideos가 있으면 지정된 장면에서만 영상이 나오고,
+  // 없을 때만 챕터 영상(video)이 모든 장면에 적용된다.
+  const activeVideo =
+    currentSlide.video ??
+    chapter.slideVideos?.[slideIndex] ??
+    (chapter.slideVideos ? undefined : chapter.video);
 
   const isLastChapter = currentChapterIndex === STORY_CHAPTERS.length - 1;
   const nextLabel =
