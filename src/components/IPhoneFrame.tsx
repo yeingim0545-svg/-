@@ -1,5 +1,5 @@
 import React from 'react';
-import { Signal, Wifi } from 'lucide-react';
+import { Wifi } from 'lucide-react';
 import { ScreenState, WallpaperItem } from '../types/ios';
 import { SafeImage } from './SafeImage';
 
@@ -52,7 +52,13 @@ export const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
           <div className="pointer-events-none absolute top-0 inset-x-0 z-40 h-12 px-7 pt-[env(safe-area-inset-top)] flex items-center justify-between select-none text-white">
             <span className="text-[14px] font-semibold tracking-tight">KT</span>
             <div className="flex items-center gap-1.5">
-              <Signal className="w-3.5 h-3.5" strokeWidth={2.4} />
+              {/* 신호 세기 4칸 */}
+              <span className="flex items-end gap-[2px] h-[11px]">
+                <span className="w-[3px] h-[4px] rounded-[1px] bg-white" />
+                <span className="w-[3px] h-[6px] rounded-[1px] bg-white" />
+                <span className="w-[3px] h-[8.5px] rounded-[1px] bg-white" />
+                <span className="w-[3px] h-[11px] rounded-[1px] bg-white" />
+              </span>
               <Wifi className="w-3.5 h-3.5" strokeWidth={2.4} />
               <span className="flex items-center gap-[1.5px]">
                 <span className="w-[23px] h-[11.5px] rounded-[3.5px] border border-white/75 p-[1.5px] flex items-center">
