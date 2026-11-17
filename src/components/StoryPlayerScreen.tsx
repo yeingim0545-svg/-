@@ -31,8 +31,8 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
   // 마지막 챕터 마지막 장면을 다 읽은 뒤의 엔딩 상태 — 처음으로 되돌아가지 않는다
   const [ended, setEnded] = useState(false);
 
-  // '이전'으로 되돌아온 장면은 타자 효과 없이 전문을 바로 보여준다
-  const instantTextRef = useRef(false);
+  // '이전'으로 되돌아온 장면은 타자 효과 없이 전문을 보여준다 (장면 키로 기억)
+  const instantScenesRef = useRef<Set<string>>(new Set());
   // '이전'으로 앞 챕터에 들어갈 때는 그 챕터의 마지막 장면에서 시작한다
   const jumpToLastSlideRef = useRef(false);
 
@@ -61,18 +61,21 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
     phase === 'reaction' && chosenOption
       ? chosenOption.result
       : currentSlide.text;
+  const sceneKey = `${currentChapterIndex}-${slideIndex}-${phase}`;
 
   const isTypingDone =
     phase === 'choice' || ended || displayedChars >= targetText.length;
 
   useEffect(() => {
-    if (instantTextRef.current) {
-      instantTextRef.current = false;
+    if (instantScenesRef.current.has(sceneKey)) {
+      instantScenesRef.current.delete(sceneKey);
       setDisplayedChars(targetText.length);
       return;
     }
     setDisplayedChars(0);
-  }, [slideIndex, phase, currentChapterIndex, targetText]);
+    // sceneKey가 바꾸는 장면을 식별한다
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sceneKey, targetText]);
 
   useEffect(() => {
     if (phase === 'choice' || ended || displayedChars >= targetText.length) {
@@ -126,20 +129,34 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
       setEnded(false);
       return;
     }
-    instantTextRef.current = true;
     if (phase === 'reaction') {
+      instantScenesRef.current.add(`${currentChapterIndex}-${slideIndex}-choice`);
       setPhase('choice');
       return;
     }
     if (phase === 'choice') {
+      instantScenesRef.current.add(
+        `${currentChapterIndex}-${slideIndex}-narration`,
+      );
       setPhase('narration');
       return;
     }
     if (slideIndex > 0) {
+      instantScenesRef.current.add(
+        `${currentChapterIndex}-${slideIndex - 1}-narration`,
+      );
       setSlideIndex((i) => i - 1);
       return;
     }
     if (currentChapterIndex > 0) {
+      const previousChapter = STORY_CHAPTERS[currentChapterIndex - 1];
+      const lastSlideIndex = Math.max(
+        0,
+        (previousChapter?.slides.length ?? 1) - 1,
+      );
+      instantScenesRef.current.add(
+        `${currentChapterIndex - 1}-${lastSlideIndex}-narration`,
+      );
       jumpToLastSlideRef.current = true;
       onPreviousChapter();
     }
