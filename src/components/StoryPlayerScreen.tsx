@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
-import { STORY_CHAPTERS } from '../data/sakuyaDateData';
+import { STORY_CHAPTERS, SAKUYA_PHOTOS } from '../data/sakuyaDateData';
 import { SafeImage } from './SafeImage';
+import { CallSceneBanner, MessagesSceneBanner } from './StorySceneBanner';
 
 interface StoryPlayerScreenProps {
   currentChapterIndex: number;
@@ -183,8 +184,7 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
     chapter.slideVideos?.[slideIndex] ??
     (chapter.slideVideos ? undefined : chapter.video);
 
-  const isLastChapter = currentChapterIndex === STORY_CHAPTERS.length - 1;
-  const nextLabel =
+  const isLastChapter = currentChapterIndex === STORY_CHAPTERS.length - 1;  const nextLabel =
     phase === 'reaction' || slideIndex === slides.length - 1
       ? isLastChapter
         ? '마지막'
@@ -217,7 +217,11 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
         </div>
 
         <div className="w-full max-w-[430px] mx-auto h-[36dvh] min-h-[210px] max-h-[340px] rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.55)] border border-white/10 bg-black">
-          {activeVideo ? (
+          {currentSlide.scene?.overlay === 'call' ? (
+            <CallSceneBanner profileImage={SAKUYA_PHOTOS.callProfile} />
+          ) : currentSlide.scene?.overlay === 'messages' ? (
+            <MessagesSceneBanner messages={currentSlide.scene.messages} />
+          ) : activeVideo ? (
             <video
               key={`${currentChapterIndex}-${slideIndex}-${activeVideo}`}
               src={activeVideo}

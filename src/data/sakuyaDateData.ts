@@ -48,6 +48,7 @@ export const SAKUYA_PHOTOS = {
   parkEnvelopeNight: './assets/aistudio/sakuya_park_envelope_night.jpg', // 밤 공원, 교복 자켓 옆모습
   parkLetterNight: './assets/aistudio/sakuya_park_letter_night.jpg', // 밤 산책로 가죽재킷
   secondLetterNote: './assets/aistudio/sakuya_second_letter_note.jpg', // 두 번째 손편지 (하루하루는 더 따뜻해 되자)
+  callProfile: './assets/aistudio/sakuya_call_profile.jpg', // 전화 수신 배너 프로필 사진
   birthdayCake: './src/assets/images/sakuya_birthday_cake_1794916860554.jpg',
 };
 
@@ -228,6 +229,17 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '생일의 시작 — 첫 번째 연락',
     place: '지유의 방',
     coverImage: SAKUYA_PHOTOS.roomCasual,
+    // 2번째 장면은 전화 수신 배너, 메시지 문구가 나오는 장면은 메시지 알림 배너로 그린다
+    slideScenes: {
+      1: { overlay: 'call' },
+      3: {
+        overlay: 'messages',
+        messages: [
+          '누나, 생일 축하해 ♡ 일어났어? 오늘은 진짜 내가 하루 종일 데리고 다닐 거야.',
+          '그러니까 예쁘게 하고 나와. 누나한테 어울리는 데는 내가 다 알아봤거든.',
+        ],
+      },
+    },
     story: `11월의 아침은 생각보다 조용했다.
 
 창문 사이로 들어오는 희미한 빛이 방 안을 천천히 채우고 있었다. 아직 잠에서 완전히 깨어나지 못한 채 이불 속에 누워 있던 순간, 침대 옆 휴대전화가 짧게 진동했다.
@@ -1079,7 +1091,13 @@ export const STORY_CHAPTERS: StoryChapter[] = RAW_CHAPTERS.map((ch) => ({
   ...ch,
   slides: buildSlides(ch.story, ch.coverImage).map((slide, index) => {
     const override = ch.slideImages?.[index];
-    return override ? { ...slide, image: override } : slide;
+    const scene = ch.slideScenes?.[index];
+    if (!override && !scene) return slide;
+    return {
+      ...slide,
+      ...(override ? { image: override } : {}),
+      ...(scene ? { scene } : {}),
+    };
   }),
 }));
 

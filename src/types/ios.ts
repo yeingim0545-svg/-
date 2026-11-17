@@ -61,7 +61,17 @@ export interface StorySlide {
   image?: string;
   /** 동영상(.mp4) 장면. 지정되면 이미지 대신 <video>로 재생된다. */
   video?: string;
+  /** 사진 대신 배너 UI(전화 수신·메시지 알림)로 그리는 장면. */
+  scene?: StorySceneOverlay;
 }
+
+/**
+ * 사진 대신 미디어 영역에 그리는 아이폰 스타일 배너.
+ * call: 전화 수신 배너 · messages: 메시지 알림 배너
+ */
+export type StorySceneOverlay =
+  | { overlay: 'call' }
+  | { overlay: 'messages'; messages: string[] };
 
 export interface StoryChapter {
   id: number;
@@ -85,6 +95,8 @@ export interface StoryChapter {
    * 선택 전(선택지 화면)에는 쓰이지 않는다.
    */
   choiceImages?: Record<number, string>;
+  /** 장면(슬라이드) 인덱스별로 사진 대신 배너 UI를 그린다. */
+  slideScenes?: Record<number, StorySceneOverlay>;
   slides: StorySlide[];
   story: string;
   choices: StoryChoice[];
