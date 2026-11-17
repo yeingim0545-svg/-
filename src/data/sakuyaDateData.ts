@@ -37,7 +37,7 @@ export const SAKUYA_PHOTOS = {
   nightIllumination: './assets/aistudio/IMG_7202_f5ccc935.jpeg', // night illuminated trees
   nightCloseSmile: './assets/aistudio/IMG_7198_8ce0e2a1.jpeg', // close-up night outdoor smile
   facetimeCall: './assets/aistudio/facetime_call_night.jpg', // 헤어진 뒤 밤 영상통화 화면
-  lockNight: './assets/aistudio/sakuya_lock_night.jpg', // 잠금화면 배경 (밤길 · 검은 재킷)
+  lockNight: './assets/aistudio/sakuya_lock_wallpaper.jpg', // 잠금화면 배경 (밤길 · 검은 재킷)
   handwrittenLetter: './assets/aistudio/sakuya_handwritten_letter.jpg', // 손편지 "사랑이 이렇게 행복한 것이란 걸 알려 줘서 고마워"
   taxiNight: './assets/aistudio/sakuya_taxi_night.jpg', // 밤 택시 안에서 본 앞좌석
   phoneCase: './assets/aistudio/sakuya_phone_case.jpg', // 즉석사진을 핸드폰 케이스에 넣은 손
