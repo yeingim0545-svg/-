@@ -81,7 +81,7 @@ export default function App() {
   const [focusModeOn, setFocusModeOn] = useState(true);
   const [flashlightOn, setFlashlightOn] = useState(false);
 
-  const [userNickname, setUserNickname] = useState('주인공');
+  const [userNickname, setUserNickname] = useState('지유');
 
   // Repertoire State (22 Chapters)
   const [currentChapterIndex, setCurrentChapterIndex] = useState<number>(() =>
@@ -336,7 +336,7 @@ export default function App() {
       title,
       location: currentChapter.place,
       time: currentTime,
-      caption: `${userNickname}님과 사쿠야가 직접 남긴 생일 기념 컷 📸`,
+      caption: `${userNickname}와 사쿠야가 직접 남긴 생일 기념 컷 📸`,
       imageUrl,
       liked: true,
       filterClass,

@@ -58,6 +58,8 @@ export interface StoryChoice {
 export interface StorySlide {
   text: string;
   image?: string;
+  /** 동영상(.mp4) 장면. 지정되면 이미지 대신 <video>로 재생된다. */
+  video?: string;
 }
 
 export interface StoryChapter {
@@ -68,6 +70,8 @@ export interface StoryChapter {
   title: string;
   place: string;
   coverImage: string;
+  /** 챕터 전체를 움직이는 장면으로 보여줄 동영상(.mp4). coverImage는 포스터로 쓰인다. */
+  video?: string;
   slides: StorySlide[];
   story: string;
   choices: StoryChoice[];

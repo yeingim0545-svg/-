@@ -201,7 +201,7 @@ export const MessagesApp: React.FC<MessagesAppProps> = ({
             <Phone className="w-8 h-8 mx-auto text-emerald-500" />
             <h2 className="text-base font-bold">사쿠야에게 전화하기</h2>
             <p className="text-xs leading-relaxed opacity-85 whitespace-pre-line">
-              {'사쿠야에게 전화를 걸고 있어...\n\n사쿠야: 여보세요?\n\n"응, 왜? 목소리 듣고 싶었어?"\n\n그는 웃으며 전화를 받았다.'}
+              {'사쿠야에게 전화를 걸고 있어...\n\n사쿠야: 여보세요?\n\n"누나, 왜? 목소리 듣고 싶었어?"\n\n그는 웃으며 전화를 받았다.'}
             </p>
             <button
               type="button"

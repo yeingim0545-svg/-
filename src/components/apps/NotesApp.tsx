@@ -80,7 +80,7 @@ export const NotesApp: React.FC<NotesAppProps> = ({
           onClick={() =>
             onAddNote(
               '11월 18일 사쿠야에게 전할 말',
-              '오늘 하루 웃는 모습 많이 볼 수 있어서 너무 좋았어. 생일 축하해!',
+              '누나, 오늘 하루 웃는 모습 많이 볼 수 있어서 너무 좋았어. 생일 축하해!',
             )
           }
           className="w-9 h-9 rounded-full bg-amber-500/15 text-amber-500 flex items-center justify-center hover:bg-amber-500/25"

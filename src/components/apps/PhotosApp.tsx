@@ -49,7 +49,7 @@ export const PhotosApp: React.FC<PhotosAppProps> = ({
         <div className="text-center">
           <h1 className="text-[16px] font-bold tracking-tight">사진</h1>
           <p className={`text-[10px] ${muted}`}>
-            11월 18일 · 사쿠야 생일 앨범 ({photos.length}장)
+            11월 18일 · 지유 생일 앨범 ({photos.length}장)
           </p>
         </div>
 

@@ -101,7 +101,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </div>
             <h2 className="text-lg font-bold">iOS 27.0</h2>
             <p className={`text-xs mt-1 ${mutedText}`}>
-              iOS가 최신 상태입니다 · 11월 18일 사쿠야 생일 에디션
+              iOS가 최신 상태입니다 · 11월 18일 지유 생일 에디션
             </p>
             <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-500 text-xs font-semibold">
               <Check className="w-3.5 h-3.5" />
@@ -114,7 +114,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             <ul className={`text-xs space-y-2 leading-relaxed ${mutedText}`}>
               <li>• 리퀴드 글래스(Liquid Glass) 반투명 잠금화면 시계 및 독 적용</li>
               <li>• 홈 화면 아이콘 스타일 전환 (기본 / 다크 / 틴트 글래스)</li>
-              <li>• 사쿠야 11월 18일 생일 데이트 22화 & 다이나믹 아일랜드 연동</li>
+              <li>• 지유의 11월 18일 생일 데이트 22화 & 다이나믹 아일랜드 연동</li>
               <li>• 제어 센터 실시간 밝기 및 사운드 믹서 지원</li>
             </ul>
           </div>
@@ -297,7 +297,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
               value={draftName}
               onChange={(e) => setDraftName(e.target.value)}
               maxLength={12}
-              placeholder="예: 주인공, 여주, 자기"
+              placeholder="예: 지유, 누나, 자기"
               className={`w-full px-3.5 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 ${
                 isDark
                   ? 'bg-zinc-800 border-zinc-700 text-white'
@@ -307,7 +307,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             <button
               type="button"
               onClick={() => {
-                onChangeNickname(draftName.trim() || '주인공');
+                onChangeNickname(draftName.trim() || '지유');
                 setView('root');
               }}
               className="w-full py-2.5 rounded-2xl bg-sky-500 text-white text-xs font-bold hover:bg-sky-600 transition-colors"
@@ -417,7 +417,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
               <div className="w-8 h-8 rounded-xl bg-rose-500 text-white flex items-center justify-center">
                 <Bell className="w-4 h-4" />
               </div>
-              <span className="text-sm font-semibold">사쿠야 생일 푸시 알림 미리보기</span>
+              <span className="text-sm font-semibold">지유 생일 푸시 알림 미리보기</span>
             </div>
             <Sparkles className="w-4 h-4 text-sky-500" />
           </button>

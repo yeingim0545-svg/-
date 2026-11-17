@@ -11,7 +11,7 @@ interface SpotlightSearchProps {
 }
 
 const SEARCHABLE_ITEMS: { id: AppId; label: string; keywords: string }[] = [
-  { id: 'pota', label: '포타 · 사쿠야 생일 데이트', keywords: '포타 스토리 데이트 11월 18일' },
+  { id: 'pota', label: '포타 · 지유 생일 데이트', keywords: '포타 스토리 데이트 11월 18일' },
   { id: 'messages', label: '메시지 · 사쿠야', keywords: '메시지 카톡 문자 사쿠야 답장' },
   { id: 'photos', label: '사진 · 생일 앨범', keywords: '사진 앨범 크루아상 케이크' },
   { id: 'calendar', label: '캘린더 · 11월 18일', keywords: '캘린더 일정 생일' },

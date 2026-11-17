@@ -72,7 +72,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                     <Calendar className="w-3.5 h-3.5 opacity-60" />
                   </div>
                   <p className="text-[15px] font-bold tracking-tight mt-0.5 leading-snug">
-                    사쿠야 생일 🎂
+                    지유 생일 🎂
                   </p>
                 </div>
 

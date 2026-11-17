@@ -99,6 +99,8 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
 
   const visibleText = targetText.slice(0, displayedChars);
   const activeImage = currentSlide.image || chapter.coverImage;
+  // 동영상 장면: 슬라이드에 지정된 영상이 우선, 없으면 챕터 영상
+  const activeVideo = currentSlide.video || chapter.video;
 
   return (
     <div className="relative h-full w-full bg-[#16171a] text-[#f4f4f6] flex flex-col justify-between pt-14 pb-8 overflow-hidden select-none">
@@ -124,12 +126,27 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
           </span>
         </div>
 
-        <div className="w-full h-[39dvh] min-h-[220px] max-h-[360px] rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.55)] border border-white/10">
-          <SafeImage
-            src={activeImage}
-            alt={chapter.title}
-            className="w-full h-full object-cover"
-          />
+        <div className="w-full h-[39dvh] min-h-[220px] max-h-[360px] rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.55)] border border-white/10 bg-black">
+          {activeVideo ? (
+            <video
+              key={`${currentChapterIndex}-${slideIndex}-${activeVideo}`}
+              src={activeVideo}
+              poster={activeImage}
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              preload="metadata"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <SafeImage
+              src={activeImage}
+              alt={chapter.title}
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
       </div>
 

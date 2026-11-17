@@ -102,7 +102,7 @@ export const LockScreen: React.FC<LockScreenProps> = ({
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/35 text-white text-[11px] font-medium shadow-sm hover:bg-white/30 transition-colors"
           >
             <CalendarHeart className="w-3.5 h-3.5 text-sky-200 shrink-0" />
-            <span className="whitespace-nowrap">사쿠야 생일 D-DAY</span>
+            <span className="whitespace-nowrap">지유 생일 D-DAY</span>
           </button>
 
           <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/35 text-white text-[11px] font-medium shadow-sm">

@@ -9,3 +9,6 @@ coverage/
 
 # large unreferenced screen recordings (not used by the app)
 public/assets/aistudio/*.mov
+
+# 앱이 참조하는 동영상(.mp4)은 배포에 포함한다 (위 *.mov 제외 규칙과 별개)
+!public/assets/aistudio/*.mp4
