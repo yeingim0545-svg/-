@@ -126,7 +126,7 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
           </span>
         </div>
 
-        <div className="w-full h-[39dvh] min-h-[220px] max-h-[360px] rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.55)] border border-white/10 bg-black">
+        <div className="w-full max-w-[430px] mx-auto h-[39dvh] min-h-[220px] max-h-[360px] rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.55)] border border-white/10 bg-black">
           {activeVideo ? (
             <video
               key={`${currentChapterIndex}-${slideIndex}-${activeVideo}`}
@@ -138,7 +138,7 @@ export const StoryPlayerScreen: React.FC<StoryPlayerScreenProps> = ({
               playsInline
               controls
               preload="metadata"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover sm:object-contain"
             />
           ) : (
             <SafeImage
