@@ -37,6 +37,10 @@ export const SAKUYA_PHOTOS = {
   nightIllumination: './assets/aistudio/IMG_7202_f5ccc935.jpeg', // night illuminated trees
   nightCloseSmile: './assets/aistudio/IMG_7198_8ce0e2a1.jpeg', // close-up night outdoor smile
   facetimeCall: './assets/aistudio/facetime_call_night.jpg', // 헤어진 뒤 밤 영상통화 화면
+  lockNight: './assets/aistudio/sakuya_lock_night.jpg', // 잠금화면 배경 (밤길 · 검은 재킷)
+  handwrittenLetter: './assets/aistudio/sakuya_handwritten_letter.jpg', // 손편지 "사랑이 이렇게 행복한 것이란 걸 알려 줘서 고마워"
+  taxiNight: './assets/aistudio/sakuya_taxi_night.jpg', // 밤 택시 안에서 본 앞좌석
+  phoneCase: './assets/aistudio/sakuya_phone_case.jpg', // 즉석사진을 핸드폰 케이스에 넣은 손
   birthdayCake: './src/assets/images/sakuya_birthday_cake_1794916860554.jpg',
 };
 
@@ -51,6 +55,14 @@ export const SAKUYA_VIDEOS = {
 export const SAKUYA_AVATAR = SAKUYA_PHOTOS.heartGummy;
 
 export const WALLPAPERS: WallpaperItem[] = [
+  {
+    id: 'sakuya-lock-night',
+    name: '밤길의 사쿠야',
+    subtitle: 'iOS 27 리퀴드 글래스 잠금화면',
+    imageUrl: SAKUYA_PHOTOS.lockNight,
+    gradientClass: 'from-slate-950 via-zinc-950 to-black',
+    isDarkBg: true,
+  },
   {
     id: 'ios27-glass',
     name: 'iOS 27 리퀴드 글래스',
@@ -371,6 +383,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '사진관 — 오늘을 기록하기',
     place: '도쿄의 즉석사진관',
     coverImage: SAKUYA_PHOTOS.photobooth,
+    // 마지막 장면(사진을 건네받는 순간)에서 핸드폰 케이스에 넣은 사진을 보여준다
+    slideImages: { 2: SAKUYA_PHOTOS.phoneCase },
     story: `카페를 나와 걷던 중 사쿠야가 사진관을 발견했다. "누나, 우리 이거 찍을까?"
 
 기계 안으로 들어가자 사쿠야는 화면에 표시된 포즈를 하나씩 살펴봤다. 첫 번째 사진은 무난했다.
@@ -594,6 +608,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '공원 — 사쿠야가 준비한 편지',
     place: '도쿄의 한적한 공원',
     coverImage: SAKUYA_PHOTOS.heartGummy,
+    // "봉투 안에는 손으로 쓴 편지가 들어 있었다" 장면에 실제 손편지 사진
+    slideImages: { 1: SAKUYA_PHOTOS.handwrittenLetter },
     story: `카페를 나왔을 때 햇빛은 조금씩 기울고 있었다. 사쿠야는 근처의 한적한 공원으로 데려갔다.
 
 잠시 앉아 있던 사쿠야가 가방을 열었다. "누나, 이거." 작은 봉투 하나를 꺼냈다. 평소와 달리 조심스러운 표정이었다. "읽어 봐."
@@ -667,6 +683,8 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
     title: '이동하는 차 안 — 작은 비밀',
     place: '도쿄의 이동 중인 택시',
     coverImage: SAKUYA_PHOTOS.yukataPhone,
+    // "사쿠야는 택시를 잡았다" 장면에 밤 택시 실내 사진
+    slideImages: { 0: SAKUYA_PHOTOS.taxiNight },
     story: `공원을 나선 뒤 사쿠야는 택시를 잡았다. 어디로 가는지 묻자 그는 목적지를 알려주지 않았다. "누나, 조금만 더 비밀로 해."
 
 창밖으로 도쿄의 풍경이 지나갔다. 사쿠야는 휴대전화로 예약 확인 메시지를 확인하고 있었다.
@@ -1029,7 +1047,10 @@ const RAW_CHAPTERS: Omit<StoryChapter, 'slides'>[] = [
 
 export const STORY_CHAPTERS: StoryChapter[] = RAW_CHAPTERS.map((ch) => ({
   ...ch,
-  slides: buildSlides(ch.story, ch.coverImage),
+  slides: buildSlides(ch.story, ch.coverImage).map((slide, index) => {
+    const override = ch.slideImages?.[index];
+    return override ? { ...slide, image: override } : slide;
+  }),
 }));
 
 export const INITIAL_PHOTOS: PhotoMemory[] = [

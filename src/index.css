@@ -92,16 +92,19 @@
     0 14px 32px -12px rgba(0, 0, 0, 0.45);
 }
 
+/* iOS 27 잠금화면 — 반투명 어두운 리퀴드 글래스 숫자 */
 .ios-lock-clock-glass {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.96) 0%,
-    rgba(255, 255, 255, 0.68) 100%
+    rgba(236, 239, 244, 0.88) 0%,
+    rgba(186, 192, 202, 0.62) 52%,
+    rgba(126, 132, 143, 0.5) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 4px 18px rgba(15, 23, 42, 0.22));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 1px rgba(255, 255, 255, 0.22));
 }
 
 .no-scrollbar::-webkit-scrollbar {

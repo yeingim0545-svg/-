@@ -1,4 +1,5 @@
-export type ScreenState = 'lock' | 'story' | 'home' | 'app';
+/** 이 앱에 존재하는 화면은 잠금화면과 이야기 진행, 둘뿐이다. */
+export type ScreenState = 'lock' | 'story';
 
 export type AppId =
   | 'pota'
@@ -72,6 +73,8 @@ export interface StoryChapter {
   coverImage: string;
   /** 챕터 전체를 움직이는 장면으로 보여줄 동영상(.mp4). coverImage는 포스터로 쓰인다. */
   video?: string;
+  /** 장면(슬라이드) 인덱스별로 사진을 교체한다. 지정하지 않은 장면은 기본 사진을 쓴다. */
+  slideImages?: Record<number, string>;
   slides: StorySlide[];
   story: string;
   choices: StoryChoice[];
